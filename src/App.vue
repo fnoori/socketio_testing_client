@@ -2,16 +2,16 @@
     <v-app>
         <v-navigation-drawer clipped
                              v-model="drawer"
-                             :color="color"
-                             :expand-on-hover="true"
-                             :mini-variant="true"
+                             color="grey darken-4"
                              absolute
+                             bottom
+                             temporary
                              dark
                              app>
-            <v-list
-                    dense
+            <v-list dense
                     nav
                     class="py-0">
+
                 <v-list-item two-line :class="'px-0'">
                     <v-list-item-avatar>
                         <img src="https://randomuser.me/api/portraits/women/70.jpg">
@@ -40,30 +40,41 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar
-                app
-                clipped-left
-                flat
-                :color="color"
-                tile
-                dense>
+        <v-app-bar app
+                   clipped-left
+                   flat
+                   color="grey darken-4"
+                   tile
+                   dense>
+
+<!--            <v-btn icon color="white">-->
+<!--                <v-icon v-if="drawer" @click="drawer = true">mdi-menu-open</v-icon>-->
+<!--                <v-icon v-else-if="!drawer" @click="drawer = false">mdi-menu</v-icon>-->
+<!--            </v-btn>-->
+
+<!--            <v-btn icon color="white">-->
+<!--                <v-icon v-if="!drawer" @click="drawer = true">mdi-menu</v-icon>-->
+<!--                <v-icon v-if="drawer" @click="drawer = false">mdi-menu-open</v-icon>-->
+<!--            </v-btn>-->
+
+            <v-btn icon color="white">
+                <v-icon @click="drawer = true">mdi-menu</v-icon>
+            </v-btn>
 
             <v-row class="justify-center mb-n6">
-                <v-col cols="12" sm="6">
-                    <v-text-field
-                            v-model="uri"
-                            solo
-                            label="http(s)://..."
-                            clearable
-                            dense>
+                <v-col cols="11" sm="8">
+                    <v-text-field v-model="uri"
+                                  solo
+                                  label="http(s)://..."
+                                  clearable
+                                  dense>
 
                         <template v-slot:append>
                             <v-fade-transition>
-                                <v-progress-circular
-                                        v-if="loading"
-                                        size="20"
-                                        color="info"
-                                        indeterminate></v-progress-circular>
+                                <v-progress-circular v-if="loading"
+                                                     size="20"
+                                                     color="info"
+                                                     indeterminate></v-progress-circular>
                             </v-fade-transition>
                         </template>
 
@@ -78,6 +89,8 @@
             </v-row>
 
             <connection-status/>
+
+
         </v-app-bar>
 
         <v-content>
@@ -93,17 +106,17 @@
 
 <script>
     import ConnectionStatus from "./components/ConnectionStatus";
+
     export default {
         components: {ConnectionStatus},
         data() {
             return {
-                drawer: true,
+                drawer: false,
                 items: [
                     {title: 'Dashboard', icon: 'mdi-view-dashboard'},
                     {title: 'Photos', icon: 'mdi-image'},
                     {title: 'About', icon: 'mdi-help-box'},
                 ],
-                color: 'grey darken-4',
                 background: false,
                 uri: '',
                 loading: false
