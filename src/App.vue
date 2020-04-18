@@ -47,16 +47,6 @@
                    tile
                    dense>
 
-<!--            <v-btn icon color="white">-->
-<!--                <v-icon v-if="drawer" @click="drawer = true">mdi-menu-open</v-icon>-->
-<!--                <v-icon v-else-if="!drawer" @click="drawer = false">mdi-menu</v-icon>-->
-<!--            </v-btn>-->
-
-<!--            <v-btn icon color="white">-->
-<!--                <v-icon v-if="!drawer" @click="drawer = true">mdi-menu</v-icon>-->
-<!--                <v-icon v-if="drawer" @click="drawer = false">mdi-menu-open</v-icon>-->
-<!--            </v-btn>-->
-
             <v-btn icon color="white">
                 <v-icon @click="drawer = true">mdi-menu</v-icon>
             </v-btn>
